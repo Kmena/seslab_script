@@ -10,6 +10,10 @@ while(true)
     #crea una lista de los archivos contenidos en la carpeta /etc/weewx/skins/Standard
     #donde se generan los skins para internet
     a=os.listdir(/etc/weewx/skins/Standard)
+    #eliminar archivos viejos de la carpeta de htdocs
+    for j in a:
+        if(os.path.exists("/opt/lampp/htdocs"+j)):
+            os.remove("/opt/lampp/htdocs"+j)
     #se toma la cantidad de archivos en la carpeta
     dim=len(a)
     #se recorre toda la lista
