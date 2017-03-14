@@ -38,7 +38,15 @@ function [rd,rl,ld] = parametros_cap(rf,rfs,rp,ro,c,iter,err)
         //asignacion dl error a la matriz
         Mrd(n,3)=Perr;
     end
-    rd=Mrd(n,2);
+    //selector del promedio con menor error
+    rd=Mrd(2,2)
+    Perr=Mrd(2,3)
+    for j=2:n
+        if(Mrd(n,3)<Perr)
+            rd=Mrd(n,2)
+            Perr=Mrd(n,3)
+        end
+    end
     disp('Rd listo',rd,Mrd(n,3));
     
     //calculo de rl, esta medicion debe hacer a la mayor frecuencia posible para minimizar el efecto de l y c
@@ -73,7 +81,15 @@ function [rd,rl,ld] = parametros_cap(rf,rfs,rp,ro,c,iter,err)
         //asignacion dl error a la matriz
         Mrl(n,3)=Perr;
     end
-    rl=Mrl(n,2);
+    //selector del promedio con menor error
+    rl=Mrd(2,2)
+    Perr=Mrl(2,3)
+    for j=2:n
+        if(Mrl(n,3)<Perr)
+            rl=Mrd(n,2)
+            Perr=Mrl(n,3)
+        end
+    end
     disp('rl lista');
     disp(rl,Perr,n);
     
@@ -119,7 +135,15 @@ function [rd,rl,ld] = parametros_cap(rf,rfs,rp,ro,c,iter,err)
         //asignacion dl error a la matriz
         Mld(n,3)=Perr;
     end
-    ld=Mld(n,2);
+    //selector del promedio con menor error
+    ld=Mrd(2,2)
+    Perr=Mld(2,3)
+    for j=2:n
+        if(Mld(n,3)<Perr)
+            ld=Mrd(n,2)
+            Perr=Mld(n,3)
+        end
+    end
     disp(ld,Perr,n);
     
 endfunction

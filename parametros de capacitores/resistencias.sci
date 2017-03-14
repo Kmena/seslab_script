@@ -1,4 +1,4 @@
-function [rf,rfs,rp,ro] = resistencias(iter,err)
+    function [rf,rfs,rp,ro] = resistencias(iter,err)
     //resistencia rp
     n=1;
     Perr=1;
@@ -21,7 +21,14 @@ function [rf,rfs,rp,ro] = resistencias(iter,err)
         Mrp(n,3)=Perr
         disp(Mrp(n,2),Mrp(n,3),n) 
     end
-    rp=Mrp(n,2)
+    rp=Mrp(2,2)
+    Perr=Mrp(2,3)
+    for j=2:n
+        if(Mrp(n,3)<Perr)
+            rp=Mrp(n,2)
+            Perr=Mrp(n,3)
+        end
+    end
     disp('rp lista')
     disp(Mrp(n,2),Mrp(n,3),n)
     //resitencia Ro
@@ -46,7 +53,14 @@ function [rf,rfs,rp,ro] = resistencias(iter,err)
         Mro(n,3)=Perr 
         disp(Mro(n,2),Mro(n,3),n)
     end
-    ro=Mro(n,2)
+    ro=Mro(2,2)
+    err=Mro(2,3)
+    for j=2:n
+        if(Mro(n,3)<Perr)
+            ro=Mro(n,2)
+            err=Mro(n,3)
+        end
+    end
     disp('ro lista')
     disp(Mro(n,2),Mro(n,3),n)
     //resitencia Rf
@@ -73,7 +87,14 @@ function [rf,rfs,rp,ro] = resistencias(iter,err)
         Mrf(n,3)=Perr 
         disp(Mrf(n,2),Mrf(n,3),n)
     end
-    rf=Mrf(n,2)
+    rf=Mrf(2,2)
+    Perr=Mrf(2,3)
+    for j=2:n
+        if(Mrf(n,3)<Perr)
+            rf=Mrf(n,2)
+            Perr=Mrf(n,3)
+        end
+    end
     disp('lista rf')
     disp(Mrf(n,2),Mrf(n,3),n)
     
@@ -100,7 +121,14 @@ function [rf,rfs,rp,ro] = resistencias(iter,err)
         Mrfs(n,3)=Perr 
         disp(Mrfs(n,2),Mrfs(n,3),n)
     end
-    rfs=Mrfs(n,2)
+    rf=Mrfs(2,2)
+    Perr=Mrfs(2,3)
+    for j=2:n
+        if(Mrfs(n,3)<Perr)
+            rf=Mrfs(n,2)
+            Perr=Mrfs(n,3)
+        end
+    end
     disp('lista rfs')
     disp(Mrfs(n,2),Mrfs(n,3),n)
 endfunction
