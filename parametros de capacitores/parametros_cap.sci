@@ -106,7 +106,7 @@ function [rd,rl,ld] = parametros_cap(rf,rfs,rp,ro,c,iter,err)
     DeltaT=input('diferencia de tiempo: ');
     //calculos
     I1=((Vf1-Vm1)/Rin)-(Vm1/ro);
-    I2=((Vf2-Vm1)/Rin)-(Vm2/ro);
+    I2=((Vf2-Vm2)/Rin)-(Vm2/ro);
     DI=I1/I2;
     Mld(n,1)=(rl*DeltaT)/(1-DI+rl*DeltaT);
     Mld(n,2)=Mrl(n,1);
@@ -123,7 +123,7 @@ function [rd,rl,ld] = parametros_cap(rf,rfs,rp,ro,c,iter,err)
         DeltaT=input('diferencia de tiempo: ');
         //calculos
         I1=((Vf1-Vm1)/Rin)-(Vm1/ro);
-        I2=((Vf2-Vm1)/Rin)-(Vm2/ro);
+        I2=((Vf2-Vm2)/Rin)-(Vm2/ro);
         DI=I1/I2;
         Mld(n,1)=(rl*DeltaT)/(1-DI+rl*DeltaT);
         for j = 1:n

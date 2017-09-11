@@ -1,36 +1,36 @@
-    function [rf,rfs,rp,ro] = resistencias(iter,err)
+    function [rf,rfs,rp,ro] = resistencias(iter,err,rp)
     //resistencia rp
-    n=1;
-    Perr=1;
-    Mrp=zeros(iter,3)
-    Vf=input('voltaje de fuente')
-    If=input('corriente de fuente')
-    Mrp(n,1)=Vf/If;
-    Mrp(n,2)=Vf/If;
-    Mrp(n,3)=1;
-    while((iter>n & Mrp(n,2)*(err/100)<Perr)| n==1)
-        n=n+1;
-        Vf=input('voltaje de fuente')
-        If=input('corriente de fuente')
-        Mrp(n,1)=Vf/If;
-        for j= 1:n
-            Mrp(n,2)=Mrp(n,2)+Mrp(j,1)
-        end
-        Mrp(n,2)=Mrp(n,2)/n
-        Perr=sqrt((Mrp(n,2)-Mrp(n-1,2))^2)
-        Mrp(n,3)=Perr
-        disp(Mrp(n,2),Mrp(n,3),n) 
-    end
-    rp=Mrp(2,2)
-    Perr=Mrp(2,3)
-    for j=2:n
-        if(Mrp(n,3)<Perr)
-            rp=Mrp(n,2)
-            Perr=Mrp(n,3)
-        end
-    end
-    disp('rp lista')
-    disp(Mrp(n,2),Mrp(n,3),n)
+    //n=1;
+    //Perr=1;
+    //Mrp=zeros(iter,3)
+    //Vf=input('voltaje de fuente')
+    //If=input('corriente de fuente')
+   // Mrp(n,1)=Vf/If;
+    //Mrp(n,2)=Vf/If;
+    //Mrp(n,3)=1;
+    //while((iter>n & Mrp(n,2)*(err/100)<Perr)| n==1)
+     //   n=n+1;
+     //   Vf=input('voltaje de fuente')
+     //   If=input('corriente de fuente')
+      //  Mrp(n,1)=Vf/If;
+     //   for j= 1:n
+     //       Mrp(n,2)=Mrp(n,2)+Mrp(j,1)
+     //   end
+     //   Mrp(n,2)=Mrp(n,2)/n
+      //  Perr=sqrt((Mrp(n,2)-Mrp(n-1,2))^2)
+      //  Mrp(n,3)=Perr
+      //  disp(Mrp(n,2),Mrp(n,3),n) 
+    //end
+    //rp=Mrp(2,2)
+    //Perr=Mrp(2,3)
+    //for j=2:n
+     //   if(Mrp(n,3)<Perr)
+     //       rp=Mrp(n,2)
+      //      Perr=Mrp(n,3)
+      //  end
+    //end
+    //disp('rp lista')
+    //disp(Mrp(n,2),Mrp(n,3),n)
     //resitencia Ro
     n=1;
     Perr=1;
@@ -121,11 +121,11 @@
         Mrfs(n,3)=Perr 
         disp(Mrfs(n,2),Mrfs(n,3),n)
     end
-    rf=Mrfs(2,2)
+    rfs=Mrfs(2,2)
     Perr=Mrfs(2,3)
     for j=2:n
         if(Mrfs(n,3)<Perr)
-            rf=Mrfs(n,2)
+            rfs=Mrfs(n,2)
             Perr=Mrfs(n,3)
         end
     end
